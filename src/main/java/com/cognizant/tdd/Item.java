@@ -1,5 +1,7 @@
 package com.cognizant.tdd;
 
+import java.util.Objects;
+
 public class Item {
 
     private String itemName;
@@ -61,7 +63,7 @@ public class Item {
         Item item = (Item) o;
         return Double.compare(item.value, value) == 0
                 && onSale == item.onSale
-                && itemName == item.itemName;
+                && Objects.equals(itemName, item.itemName);
     }
 
 

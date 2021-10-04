@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cognizant.tdd.ShoppingCartTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-10-04T02:48:04" hostname="LTCA125159" time="0.035">
+<testsuite name="com.cognizant.tdd.ShoppingCartTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-10-04T15:31:43" hostname="DESKTOP-K5EH4TM" time="0.028">
   <properties/>
-  <testcase name="testIsEmpty()" classname="com.cognizant.tdd.ShoppingCartTest" time="0.035"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="testAddItemViewCartAndRemoveItem()" classname="com.cognizant.tdd.ShoppingCartTest" time="0.026"/>
+  <testcase name="testIsEmpty()" classname="com.cognizant.tdd.ShoppingCartTest" time="0.001"/>
+  <system-out><![CDATA[Item: Sushi
+Price: 10.99
+Count: 2
+This item is on sale!
+=====
+
+Item: Tofu
+Price: 5.99
+Count: 3
+=====
+
+Subtotal: 39.95
+Removed Sushi
+Item: Tofu
+Price: 5.99
+Count: 2
+=====
+
+Subtotal: 11.98
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
