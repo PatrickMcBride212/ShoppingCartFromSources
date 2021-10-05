@@ -16,12 +16,73 @@ public class ShoppingCartTest {
     public void setUp(){
        sc = new ShoppingCart();
     }
+
     @Test
     public void testIsEmpty(){
         assertEquals(0,sc.totalItems());
     }
+
     @Test
-    public void testAddItemViewCartAndRemoveItem() {
+    public void addItemSubtotalCheck() {
+        Item tofu = new Item("Tofu", 5.99, 1, false);
+        sc.addItem(tofu);
+        assertEquals(5.99, sc.getSubtotal());
+    }
+
+    @Test
+    public void addMultipleItemsSubtotalCheck() {
+        Item tofu = new Item("Tofu", 5.99, 1, false);
+        Item sushi = new Item("Sushi", 10.99, 2, false);
+        sc.addItem(tofu);
+        assertEquals(5.99, sc.getSubtotal());
+        sc.addItem(sushi);
+        assertEquals(27.97, sc.getSubtotal());
+        assertEquals(1, sc.getItemQuantity("Tofu"));
+        assertEquals(2, sc.getItemQuantity("Sushi"));
+    }
+
+    @Test
+    public void quantityUpdateTest() {
+        Item tofu = new Item("Tofu", 5.99, 1, false);
+        Item tofu2 = new Item("Tofu", 5.99, 1, false);
+        sc.addItem(tofu);
+        sc.addItem(tofu2);
+        assertEquals(11.98, sc.getSubtotal());
+        assertEquals(2, sc.getItemQuantity("Tofu"));
+    }
+
+    @Test
+    public void removeQuantityUpdate() {
+        Item sushi = new Item("Sushi", 10.99, 3, false);
+        sc.addItem(sushi);
+        assertEquals(32.97, sc.getSubtotal());
+        assertEquals(3, sc.getItemQuantity("Sushi"));
+
+        sc.removeItem("Sushi", 1);
+        assertEquals(21.98, sc.getSubtotal(), 0.001);
+        assertEquals(2, sc.getItemQuantity("Sushi"));
+    }
+
+    @Test
+    public void adjustQuantityTest() {
+        Item tofu = new Item("Tofu", 5.99, 1, false);
+        Item sushi = new Item("Sushi", 10.99, 2, true);
+
+        sc.addItem(tofu);
+        assertEquals(5.99, sc.getSubtotal());
+        assertEquals(1, sc.getItemQuantity("Tofu"));
+
+        sc.addItem(sushi);
+        assertEquals(27.97, sc.getSubtotal());
+        assertEquals(2, sc.getItemQuantity("Sushi"));
+
+        sc.editQuantity("Sushi", 4);
+        assertEquals(49.95, sc.getSubtotal());
+        assertEquals(4, sc.getItemQuantity("Sushi"));
+    }
+
+    @Test
+    public void itemizedListTest() {
         Item tofu = new Item("Tofu", 5.99, 1, false);
         Item sushi = new Item("Sushi", 10.99, 2, true);
         Item tofu2 = new Item("Tofu", 5.99, 2, false);

@@ -1,0 +1,19 @@
+Item: Sushi
+Price: 10.99
+Quantity: 2
+This item is on sale!
+=====
+
+Item: Tofu
+Price: 5.99
+Quantity: 3
+=====
+
+Subtotal: 39.95
+Removed Sushi
+Item: Tofu
+Price: 5.99
+Quantity: 2
+=====
+
+Subtotal: 11.98
